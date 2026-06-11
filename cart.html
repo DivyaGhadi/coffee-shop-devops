@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cart</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body style="font-family:Arial; background:#f6f7fb; margin:0;">
+
+<!-- NAVBAR -->
+<div style="
+background:black;
+padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+">
+
+  <a href="index.html" style="color:white; text-decoration:none; font-weight:bold;">
+    ☕ Coffee Shop
+  </a>
+
+  <a href="index.html" style="
+  background:white;
+  color:black;
+  padding:8px 15px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:bold;
+  ">
+    ← Back to Home
+  </a>
+
+</div>
+
+<!-- TITLE -->
+<h2 style="text-align:center; margin-top:20px;">Your Cart 🛒</h2>
+
+<!-- CART ITEMS -->
+<div id="cart" style="max-width:500px; margin:20px auto;"></div>
+
+<!-- TOTAL -->
+<h3 id="total" style="text-align:center;"></h3>
+
+<!-- CHECKOUT BUTTON -->
+<div style="text-align:center; margin-top:20px;">
+  <a href="checkout.html">
+    <button style="
+    padding:12px 25px;
+    background:green;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
+    ">
+      Proceed to Checkout
+    </button>
+  </a>
+</div>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let div = document.getElementById("cart");
+let total = 0;
+
+cart.forEach((c)=>{
+
+total += c.price;
+
+div.innerHTML += `
+<div style="
+background:white;
+margin:10px;
+padding:15px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+display:flex;
+justify-content:space-between;
+">
+  <span>${c.name}</span>
+  <b>₹${c.price}</b>
+</div>
+`;
+
+});
+
+document.getElementById("total").innerText = "Total: ₹" + total;
+</script>
+
+</body>
+</html>

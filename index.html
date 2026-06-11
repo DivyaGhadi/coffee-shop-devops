@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Coffee Shop</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body style="margin:0; font-family:Arial; background:#f6f7fb;">
+
+<!-- NAVBAR -->
+<div style="background:rgba(0,0,0,0.9); padding:15px; display:flex; justify-content:space-between; align-items:center;">
+  <b style="color:white;">☕ Coffee Shop</b>
+
+  <div>
+    <a href="index.html" style="color:white; margin:10px;">Home</a>
+    <a href="cart.html" style="color:white; margin:10px;">Cart 🛒</a>
+    <a href="login.html" style="color:white; margin:10px;">Login</a>
+    <a href="register.html" style="color:white; margin:10px;">Register</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<div style="height:65vh; display:flex; align-items:center; justify-content:center; text-align:center;
+background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085') center/cover; color:white;">
+  <div>
+    <h1 style="font-size:45px;">Fresh Coffee Delivered</h1>
+    <p>Order premium coffee online</p>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<div style="display:flex; gap:20px; justify-content:center; padding:40px; flex-wrap:wrap;">
+
+<div style="width:250px; background:white; padding:15px; border-radius:15px;">
+  <h4>Espresso</h4>
+  <p>₹120</p>
+  <button onclick="add('Espresso',120)" style="width:100%; padding:10px; background:black; color:white;">Add</button>
+</div>
+
+<div style="width:250px; background:white; padding:15px; border-radius:15px;">
+  <h4>Cappuccino</h4>
+  <p>₹180</p>
+  <button onclick="add('Cappuccino',180)" style="width:100%; padding:10px; background:black; color:white;">Add</button>
+</div>
+
+<div style="width:250px; background:white; padding:15px; border-radius:15px;">
+  <h4>Latte</h4>
+  <p>₹200</p>
+  <button onclick="add('Latte',200)" style="width:100%; padding:10px; background:black; color:white;">Add</button>
+</div>
+
+</div>
+
+<script>
+function add(name,price){
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+cart.push({name,price});
+localStorage.setItem("cart",JSON.stringify(cart));
+alert(name + " added to cart!");
+}
+</script>
+
+</body>
+</html>
